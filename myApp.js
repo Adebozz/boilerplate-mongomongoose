@@ -52,6 +52,8 @@ const queryChain = (done) => {
   done(null /*, data*/);
 };
 
+mongoose.connect(<Your URI>, { useNewUrlParser: true, useUnifiedTopology: true });
+
 /** **Well Done !!**
 /* You completed these challenges, let's go celebrate !
  */
