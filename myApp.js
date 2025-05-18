@@ -3,6 +3,7 @@ require('mongoose');
 
 
 let Person;
+mongoose.connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
 const createAndSavePerson = (done) => {
   done(null /*, data*/);
@@ -51,8 +52,6 @@ const queryChain = (done) => {
 
   done(null /*, data*/);
 };
-
-mongoose.connect('0x773jd8fufhnr9nsbrf98ua9f', { useNewUrlParser: true, useUnifiedTopology: true });
 
 /** **Well Done !!**
 /* You completed these challenges, let's go celebrate !
