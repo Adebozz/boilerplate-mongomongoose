@@ -50,20 +50,40 @@ const findOneByFood = (food, done) => {
 
 
 const findPersonById = (personId, done) => {
-  done(null /*, data*/);
+  Person.findById(personId, (err, data) => {
+    if (err) return done(err);
+    done(null, data);
+  });
 };
 
 const findEditThenSave = (personId, done) => {
   const foodToAdd = "hamburger";
 
-  done(null /*, data*/);
+  Person.findById(personId, (err, person) => {
+    if (err) return done(err);
+    person.favoriteFoods.push(foodToAdd);
+    person.save((err, updatedPerson) => {
+      if (err) return done(err);
+      done(null, updatedPerson);
+    });
+  });
 };
+
 
 const findAndUpdate = (personName, done) => {
   const ageToSet = 20;
 
-  done(null /*, data*/);
+  Person.findOneAndUpdate(
+    { name: personName },
+    { age: ageToSet },
+    { new: true }, // return updated document
+    (err, data) => {
+      if (err) return done(err);
+      done(null, data);
+    }
+  );
 };
+
 
 const removeById = (personId, done) => {
   done(null /*, data*/);
